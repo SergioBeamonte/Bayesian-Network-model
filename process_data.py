@@ -44,15 +44,14 @@ def procesar_archivo_crudo(input_path, n_samples=20000):
 
 # --- CONFIGURACIÓN ---
 archivo_1 = "raw_data/accepted_2007_to_2018Q4.csv" 
-archivo_2 = "raw_data/rejected_2007_to_2018Q4.csv"
 
 # Ejecución
 if __name__ == "__main__":
-    df_acc = procesar_archivo_crudo(archivo_1, n_samples=20000)
-    df_rej = procesar_archivo_crudo(archivo_2, n_samples=20000)
+    df_acc = procesar_archivo_crudo(archivo_1, n_samples=50000)
+    print(df_acc.head())
 
-    df_final = pd.concat([df_acc, df_rej], ignore_index=True)
-    print(f"DataFrame final combinado tiene {len(df_final)} filas.")
-    df_final.to_csv("data/accepted_rejected_loans.csv", index=False)
+
+    print(f"DataFrame final combinado tiene {len(df_acc)} filas.")
+    df_acc.to_csv("data/accepted_loans.csv", index=False)
 
     print("PROCESO TERMINADO.")
